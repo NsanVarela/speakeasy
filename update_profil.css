@@ -1,0 +1,332 @@
+body{
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+.nav{
+  padding: 0 16px;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+.logo{
+  font-size: 20px;
+  font-family: 'Varela Round';
+}
+.current{
+  -webkit-transform: skew(-14deg);
+  transform: skew(-14deg);
+  background-color: #b4cc83;
+}
+.li-el{
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  margin: auto;
+}
+.pre-scrollable {
+    max-height:100%;
+}
+
+/**** menu gauche ****/
+.div_menu_gauche{
+  z-index: 2;
+  width: 18%;
+  display: inline-block;
+  color: #272C31;
+  border: solid #272C31 1px;
+}
+
+.T1{
+/*  transform: skewX(-15deg);*/
+  background-color:#154854;
+  height: 40px;
+  width: 100%;
+  margin :  0 auto;
+  line-height: 40px;
+  overflow: hidden;
+  color:white;
+}
+
+.T1a{
+
+  background-color: #272C31;
+  width: 100%;
+  height: 30px;
+  line-height: 30PX;
+  margin :  0 auto;
+  color: white;
+  text-decoration: bold;
+  color:#b4cc83;
+}
+.T1a:hover{
+  color:white;
+
+}
+.container_tag{
+  background-color: white;
+  height: 300px;
+  color: black;
+}
+#searchtag-input{
+  margin-top: 5px;
+  border-radius: 5px;
+  border-color: #154854;
+  width:80%;
+   float: left;
+    display: inline-block;
+}
+
+#searchtag-input-BTN{
+   margin-top: 5px;
+  border-radius: 5px;
+  border-color: #154854;
+  width:20%;
+  display: inline-block;
+  background-image: url("loupe.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+
+
+ }
+
+#searchtag-input-BTN:hover{
+  background-color: #b4cc83;
+  border-color:#b4cc83;
+  color: black;
+  background-image: url("loupe.png");
+
+}
+.DIV-formfield-checkbox-date{
+   margin-left: 20px;
+
+}
+
+#app {
+  width: 100%;
+  z-index: 1;
+}
+hr {
+height: 1px;
+color: #123455;
+background-color: grey;
+border: none;
+width: 80%;
+}
+.divListeSearchByContact{
+  margin-left: 15px;
+}
+.imgContact{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+#videocall{
+background-color:#E8EAF6;
+width: 500px;
+height: 350px;
+margin: auto;
+display: flex;
+margin-top: 40px;
+}
+
+
+/*****************CLASSE_USER****************/
+.divUser{
+  background-color: grey;
+}
+
+.container{
+  height: 600px;
+  width: 470px;
+  position: fixed;
+  top: 140px;
+  left: 0;
+}
+
+#description{
+  background-color: white;
+  height: 100px;
+}
+
+#pic_update{
+  position: absolute;
+  margin: auto;
+  padding: 0 40px 0 40px;
+  left: 0;
+  height: 390px;
+  width: 100%;
+}
+
+#pic_update #pic_user{
+  margin: auto;
+  top: 0;
+  max-width: 100%;
+  height: 200px;
+}
+
+#pic{
+  position: relative;
+  display: block;
+  background-color: #154854;
+  color: white;
+  padding-top: 20px;
+}
+
+#pic_ipdate{
+  
+}
+
+.custom-file-input{
+  margin: 10px;
+  opacity: 1;
+  border-radius: : 5px;
+}
+
+#pic h3{
+  text-align: center;
+}
+
+#pic p{
+  font-size: 0.8em;
+  text-align: justify;
+  padding: 20px 0 0 0;
+}
+
+
+/*** FORMULAIRE ***/
+#form{
+  background-color: white;
+  color: #868e96;
+  max-height: 100%;
+}
+
+#pic p{
+  color: #868e96;
+}
+
+#pic h3{
+  color: #868e96;
+}
+
+#form h3{
+  text-align: center;
+  margin-top: 20px;
+  color: #868e96;
+}
+
+.form-group{
+  width: 100%;
+  margin: 20px 50px;
+}
+
+.form-group #inputEmail6{
+  margin-bottom: 20px;
+}
+
+.form-group #description{
+  margin-bottom: 20px;
+}
+
+p.explain{
+margin-left: 375px;
+font-size: 0.8em;
+}
+
+label{
+  color: #868e96;
+}
+
+label.prenom{
+  padding: 0 150px 0 100px;
+}
+
+label.nom {
+  padding: 0 170px 0 100px;
+}
+
+label.pseudo {
+  padding: 0 153px 0 100px;
+}
+
+label.email{
+  padding: 0 167px 0 100px;
+}
+
+label.city{
+  padding: 0 83px 0 100px;
+}
+
+label.sexe{
+  padding: 0 187px 0 100px;
+}
+
+label.birth{
+  padding: 0 94px 0 100px;
+}
+
+label.language{
+  padding: 0 155px 0 100px;
+}
+
+option{
+  color: #868e96;
+}
+
+label.description{
+  padding: 0 143px 0 100px;
+}
+
+.text-muted{
+  margin-left: 35px;
+}
+
+#sexeHelpInline.text-muted{
+  margin-left: 217px;
+}
+
+#birthHelpInline.text-muted{
+  margin-left: 50px;
+}
+
+#languageHelpInline.text-muted{
+  margin-left: 50px;
+}
+
+#descriptionHelpInline.text-muted{
+  margin-left: 50px;
+}
+
+#description{
+  height: 140px;
+  width: 250px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#birth{
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#form .form-control{
+  width: 250px;
+}
+
+input{
+  width: 250px;
+}
+
+#sub{
+  border: 1px solid #b4cb86;
+  background-color: #b4cb86;
+  color: #184853;
+  margin-left: 322px;
+  margin-bottom: 150px;
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
