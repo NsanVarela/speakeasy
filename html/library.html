@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans|Varela+Round" rel="stylesheet">
+
+    <title>Speakeasy</title>
+  </head>
+  <body>
+    <div id="app" class=" bg-dark">
+        <nav class="navbar bg-dark navbar-expand-lg navbar-light bg-faded nav bg-company-red">
+            <a class="navbar-brand text-white" href="home.html">[ SpeakEasy ]</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarNavDropdown" class="navbar-collapse collapse">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <ul id="menu" class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="service.html">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white current" href="library.html">Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="user.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+             <!--div gauche -->
+
+             <div class= "div_menu_gauche ">
+                <!--FILTER BY -->
+
+                <div class="T1">
+                    <center><a> <b>F I L T E R &nbsp B Y   </b></a></center>
+                </div>
+
+                <!--FILTER BY TAG-->
+                <div class="T1a">
+
+                    <center> <a> <b> Tag  </b></a></center>
+                </div>
+                <div class="container_tag">
+                     <div class="searchTAG">
+                        <input  id="searchtag-input" type="text" placeholder="Search By Tag..."  >
+                        <input  id="searchtag-input-BTN" type="submit" value="" />
+                        </input>
+                </div>
+            </div>
+                <div class="T1a">
+
+                  <!--FILTER BY DATE -->
+                    <center> <a> <b> Date </b></a></center>
+                </div>
+
+                    <div class="DIV-formfield-checkbox-date">
+                        <div class="formfield-checkbox-date">
+                        <input type="checkbox" id="today" value="Today">
+                        <label for="today">Today</label>
+                        </div>
+
+                        <div class="formfield-checkbox">
+                        <input type="checkbox" id="lastWeek" value="Last week">
+                        <label for="lastWeek">Last week</label>
+                        </div>
+                         <div class="formfield-checkbox">
+                        <input type="checkbox" id="lastMonth" value="Last month">
+                        <label for="lastMonth">Last month</label>
+                        </div>
+                     </div>
+
+                 <!--FILTER BY CONTACT -->
+                  <div class="T1a">
+                    <center> <a><b>  Contact  </b></a></center>
+                 </div>
+                 <div class="searchByContact">
+                        <input  id="searchtag-input" type="text" placeholder="Search By Contact..."  >
+                        <input  id="searchtag-input-BTN" type="submit" value="" />
+                        </input>
+                </div>
+
+                 <hr><div class="divListeSearchByContact">
+                        <img src="amal.jpg" class="imgContact">
+                        <label class="p-2 ">Amal SELMI1</label>
+                     </div>
+                <hr><div class="divListeSearchByContact">
+                        <img src="amal.jpg" class="imgContact">
+                        <label class="p-2 ">Amal SELMI2</label>
+                     </div>
+                     <hr><div class="divListeSearchByContact">
+                        <img src="amal.jpg" class="imgContact">
+                        <label class="p-2 ">Amal SELMI3</label>
+                     </div>
+                     <hr><div class="divListeSearchByContact">
+                        <img src="amal.jpg" class="imgContact">
+                        <label class="p-2 ">Amal SELMI4</label>
+                     </div>
+
+
+
+             </div>
+         </DIV>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="javascript.js"></script>
+      </body>
+    </html>
