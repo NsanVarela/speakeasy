@@ -137,3 +137,12 @@ margin-top: 40px;
 .divUser{
   background-color: grey;
 }
+
+.form-inline{
+  padding-left: 150px,
+  padding-top: 20px;
+}
+
+#label{
+  padding-right: 50px;
+}
