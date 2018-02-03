@@ -1,0 +1,2 @@
+truncate user;
+truncate connexion;

@@ -16,109 +16,117 @@
 		/*
 		 * Ajouter un nouveau membre.
 		 */
-		/*public function ajouterMembre($nouveauMembre){
+		public function ajouterMembre($nouveauMembre){
+
+			$query = $this->db->prepare('INSERT INTO user (nom, prenom, email, pseudo, dateNaissance, mdp, reponse, sexe, adresse, langue) VALUES (:nom, :prenom, :email, :pseudo, :dateN, :passe, :reponse, :sexe, :adresse, :langue)');
 			
-			$query = $this->db->prepare('INSERT INTO user (email, nom, prenom, pseudo, mdp, typeProfil, type, adresse, dateInscription)
-											VALUES (:email, :nom, :prenom, :pseudo, :passe, :profil, :type, :adresse, :temps)');
-			
-			$query->bindValue(':email', $nouveauMembre->getMail(), PDO::PARAM_STR);
 			$query->bindValue(':nom', $nouveauMembre->getNom(), PDO::PARAM_STR);
 			$query->bindValue(':prenom', $nouveauMembre->getPrenom(), PDO::PARAM_STR);
+			$query->bindValue(':email', $nouveauMembre->getMail(), PDO::PARAM_STR);
 			$query->bindValue(':pseudo', $nouveauMembre->getPseudo(), PDO::PARAM_STR);
+			$query->bindValue(':dateN', $nouveauMembre->getAnniversaire(), PDO::PARAM_STR);
 			$query->bindValue(':passe', $nouveauMembre->getPassword(), PDO::PARAM_STR);
-			
-			$query->bindValue(':profil', 2, PDO::PARAM_STR);
-			$query->bindValue(':type', $nouveauMembre->gettype(), PDO::PARAM_STR);
+			$query->bindValue(':reponse', $nouveauMembre->getReponse(), PDO::PARAM_STR);
+			$query->bindValue(':sexe', $nouveauMembre->getType(), PDO::PARAM_INT);
 			$query->bindValue(':adresse', $nouveauMembre->getAdresse(), PDO::PARAM_STR);
-			$query->bindValue(':temps', $nouveauMembre->getDateInscription(), PDO::PARAM_STR);
-			$query->execute();
+			$query->bindValue(':langue', $nouveauMembre->getDescription(), PDO::PARAM_STR);
+			
+			$res = 0;
+			if($query->execute()){
+				$res = 1;
+			}
 			$query->CloseCursor();
-		}*/
+			return $res;
+		}
 		
 		/*
 		 * Mise à jour du profil d'un membre.
 		 */
 		public function miseAJourMembre($membre){
-			$query = $this->db->prepare("UPDATE user SET email = :email, nom = :nom, prenom = :prenom, pseudo = :pseudo, mdp = :passe, dateNaissance = :dateNaiss, type = :type, adresse = :adresse, langue = :langue WHERE id_user = :id_user");
+			$query = $this->db->prepare("UPDATE user SET email = :email, nom = :nom, prenom = :prenom, pseudo = :pseudo, mdp = :passe, dateNaissance = :dateNaiss, sexe = :sexe, adresse = :adresse, langue = :langue WHERE id_user = :id_user");
 			$query->bindValue(':email', $membre->getMail(), PDO::PARAM_STR);
 			$query->bindValue(':nom', $membre->getNom(), PDO::PARAM_STR);
 			$query->bindValue(':prenom', $membre->getPrenom(), PDO::PARAM_STR);
 			$query->bindValue(':pseudo', $membre->getPseudo(), PDO::PARAM_STR);
 			$query->bindValue(':passe', $membre->getPassword(), PDO::PARAM_STR);
 			$query->bindValue(':dateNaiss', $membre->getAnniversaire(), PDO::PARAM_STR);
-			$query->bindValue(':type', $membre->getType(), PDO::PARAM_INT);
+			$query->bindValue(':sexe', $membre->getType(), PDO::PARAM_INT);
 			$query->bindValue(':adresse', $membre->getAdresse(), PDO::PARAM_STR);
 			$query->bindValue(':langue', $membre->getLangue(), PDO::PARAM_STR);
-			$query->bindValue(':id_user', 1/*$membre->getID()*/, PDO::PARAM_INT);
+			$query->bindValue(':id_user', $membre->getID(), PDO::PARAM_INT);
+			$query->execute();
+
+			$res = 0;
+			if($query->rowCount() == 1){
+				$res = 1;
+			}
+echo "Res = ".$query->rowCount();
+			$query->CloseCursor();
+			return $res;
+		}
+		
+		/*
+		 * Utile pour assurer l'authentification de chaque membre.
+		 */
+		public function authentification($email, $mdp){
+			
+			$sql = $this->db->prepare('SELECT id_user, nom ,prenom, email, pseudo, photo, dateNaissance, mdp, reponse, sexe, adresse, langue, description FROM user WHERE email = :email AND mdp = :mdp');
+			$sql->bindValue(':email', $email, PDO::PARAM_STR);
+			$sql->bindValue(':mdp', $mdp, PDO::PARAM_STR);
+			$sql->execute();
+
+			$tmp = new Membre();					// Objet de récupération des information du membre.
+			if($row = $sql->fetch()){
+
+				$tmp->setID($row['id_user']);
+				$tmp->setNom($row['nom']);
+				$tmp->setPrenom($row['prenom']);
+				$tmp->setMail($row['email']);
+				$tmp->setPseudo($row['pseudo']);
+				$tmp->setPhoto($row['photo']);
+				$tmp->setPassword($row['mdp']);
+				$tmp->setAnniversaire($row['dateNaissance']);
+				$tmp->setReponse($row['reponse']);
+				$tmp->setType($row['sexe']);
+				$tmp->setAdresse($row['adresse']);
+				$tmp->setLangue($row['langue']);
+				$tmp->setDescription($row['description']);
+
+			}
+			$sql->CloseCursor();
+			return $tmp;
+
+		}
+
+		/*
+		 * Déconnexion d'un membre.
+		 */
+		public function deconnexion($idMembre){
+			$query = $this->db->prepare("UPDATE connexion SET statut_connexion = 'DECONNECTE' WHERE id_user = :id_user");
+			$query->bindValue(':id_user', $idMembre, PDO::PARAM_INT);
 			$query->execute();
 			$query->CloseCursor();
 		}
 		
 		/*
-		 * Utile pour assurer l'authentification de chaque participant au mooc.
+		 * Utiliser pour vérifier que l'adresse mail ou le pseudo sont bien uniques.
 		 */
-		/*public function authentificationMembre($pseudo, $mdp, $date){
+		public function rechercherMailOuPseudo($email, $pseudo){
 			
-			$result = $this->db->prepare('SELECT id_user, email, nom, prenom, pseudo, mdp, typeProfil, type, adresse FROM user WHERE pseudo = :pseudo AND mdp = :passe');
-			$result->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-			$result->bindValue(':passe', $mdp, PDO::PARAM_STR);
-			$result->execute();
-			
-			$membre = new Membre();
-			
-			if($row = $result->fetch()){
-				
-				$membre->setID($row['id_user']);
-				$membre->setNom($row['nom']);
-				$membre->setPrenom($row['prenom']);
-				$membre->setPseudo($row['pseudo']);
-				$membre->setmdp($row['mdp']);
-				$membre->setTypeProfil($row['typeProfil']);
-				$membre->setMail($row['email']);
-				$membre->setAdresse($row['adresse']);
-				$membre->settype($row['type']);
-				$result->CloseCursor();
-				
-				// Faire la MAJ de la dernière date de connexion.
-				$result = $this->db->prepare('UPDATE user SET derniereVisite = :date WHERE id_user = :IdMembre');
-				$result->bindValue(':date', $date, PDO::PARAM_STR);
-				$result->bindValue(':IdMembre', $membre->getID(), PDO::PARAM_INT);
-				$result->execute();
-				$result->closeCursor();		
-			}
-			
-			$result->closeCursor();
-			return $membre;
-		}*/
-		
-		/*
-		 * Utiliser lors de la phase de réinitialisation du mot de passe
-		 * afin d'envoyer le lien de modification dans un e-mail.
-		 */
-		/*public function rechercherMembreParMailPseudo($email, $pseudo){
-			
-			$result = $this->db->prepare('SELECT id_user, email, nom, prenom, pseudo, mdp, typeProfil, type, adresse FROM user WHERE email = :email AND pseudo = :pseudo');
+			$result = $this->db->prepare('SELECT count(id_user) AS total FROM user WHERE email LIKE :email OR pseudo LIKE :pseudo');
 			$result->bindValue(':email', $email, PDO::PARAM_STR);
 			$result->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
 			$result->execute();
+			$resultat = 0;
+			$row = $result->fetch();
 			
-			if($row = $result->fetch()){
-					
-				$membre = new Membre();
-				$membre->setID($row['id_user']);
-				$membre->setNom($row['nom']);
-				$membre->setPrenom($row['prenom']);
-				$membre->setPseudo($row['pseudo']);
-				$membre->setmdp($row['mdp']);
-				$membre->setTypeProfil($row['typeProfil']);
-				$membre->setMail($row['email']);
-				$membre->setAdresse($row['adresse']);
-				$membre->settype($row['type']);		
+			if($row['total'] > 0){					
+				$resultat = 1;
 			}
 			
 			$result->CloseCursor();
-			return $membre;
-		}*/
+			return $resultat;
+		}
 		
 		/*
 		 * Utiliser pour la phase de réinitialisation du mot de passe.
