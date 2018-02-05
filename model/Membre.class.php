@@ -1,28 +1,35 @@
 <?php
+
 	class Membre {
 		
 		private $id;
 		private $nom;
 		private $prenom;
 		private $pseudo;
+		private $photo;
 		private $password;
+		private $reponse;
 		private $mail;
 		private $anniversaire;
 		private $type;
 		private $adresse;
 		private $langue;
+		private $description;
 
 		/********** Constructeurs **********/
 		function __construct(){
 			$this->nom = '';
 			$this->prenom = '';
 			$this->pseudo = '';
+			$this->photo = '';
 			$this->password = '';
+			$this->reponse = '';
 			$this->mail = '';
 			$this->anniversaire = '';
 			$this->type = '';
 			$this->adresse = '';
 			$this->langue = '';
+			$this->description = '';
 		}
 
 		/********** Accesseurs **********/
@@ -42,8 +49,16 @@
 			return $this->pseudo;
 		}
 		
+		public function getPhoto(){
+			return $this->photo;
+		}
+		
 		public function getPassword(){
 			return $this->password;
+		}
+		
+		public function getReponse(){
+			return $this->reponse;
 		}
 		
 		public function getMail(){
@@ -66,6 +81,10 @@
 			return $this->langue;
 		}
 		
+		public function getDescription(){
+			return $this->description;
+		}
+		
 		
 		/********** Mutateurs **********/
 		public function setID($id){
@@ -84,8 +103,16 @@
 			$this->pseudo = $pseudo;
 		}
 		
+		public function setPhoto($photo){
+			$this->photo = $photo;
+		}
+		
 		public function setPassword($password){
 			$this->password = $password;
+		}
+		
+		public function setReponse($reponse){
+			$this->reponse= $reponse;
 		}
 		
 		public function setMail($mail){
@@ -104,7 +131,11 @@
 			$this->adresse = $adresse;
 		}
 		
-		public function setlangue($langue){
+		public function setLangue($langue){
 			$this->langue = $langue;
+		}
+		
+		public function setDescription($description){
+			$this->description = $description;
 		}
 	}
